@@ -7,12 +7,19 @@ import { uploadToCloudinary } from "@/lib/upoad";
 import Input from "@/components/ui/Input";
 import { bric } from "@/lib/font";
 
+interface ModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  onRefresh: () => void;
+  project: any;
+}
+
 export default function ProjectModal({
   isOpen,
   onClose,
   onRefresh,
   project,
-}: any) {
+}: ModalProps) {
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -105,7 +112,7 @@ export default function ProjectModal({
             {project ? "Edit Project" : "New Project"}
           </h2>
           <button onClick={onClose} className="cursor-pointer">
-            <MdClose size={22} />
+            <MdClose size={24} />
           </button>
         </div>
 
