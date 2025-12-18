@@ -12,8 +12,12 @@ export default function ProjectsPage() {
   const [editingProject, setEditingProject] = useState(null);
 
   const fetchProjects = async () => {
-    const res = await axios.get("/api/projects");
-    setProjects(res.data);
+    try {
+      const res = await axios.get("/api/projects");
+      setProjects(res.data);
+    } catch (error) {
+      console.log("Fetching projects failed");
+    }
   };
 
   const handleDelete = async (id: string) => {
@@ -44,7 +48,7 @@ export default function ProjectsPage() {
               setEditingProject(null);
               setIsModalOpen(true);
             }}
-            className="bg-(--primary-color) hover:bg-(--primary-color)/90 duration-300 text-(--accent) flex items-center gap-2 p-2 rounded-md font-bold  cursor-pointer outline-none"
+            className="bg-(--primary-color) hover:bg-(--primary-color)/90 duration-300 text-(--accent) flex items-center gap-2 px-4 py-2 rounded-md font-bold  cursor-pointer outline-none"
           >
             <MdAdd size={20} /> Add New Project
           </button>

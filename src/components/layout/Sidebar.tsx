@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { bric } from "@/lib/font";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import axios from "axios";
 
 const links = [
   { href: "/", label: "Dashboard" },
@@ -13,6 +14,13 @@ const links = [
 
 export default function Sidebar() {
   const pathname = usePathname();
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    await axios.post("/api/auth/logout");
+    router.push("/login");
+    router.refresh();
+  };
 
   return (
     <nav
@@ -42,7 +50,10 @@ export default function Sidebar() {
         </ul>
       </div>
 
-      <button className="rounded-md bg-white/10 px-3 py-2 text-sm hover:bg-white/20">
+      <button
+        className="rounded-md bg-white/10 px-3 py-2 text-sm hover:bg-white/20 cursor-pointer"
+        onClick={handleLogout}
+      >
         Logout
       </button>
     </nav>

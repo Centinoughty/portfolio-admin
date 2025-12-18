@@ -12,8 +12,12 @@ export default function ExperiencePage() {
   const [editingExp, setEditingExp] = useState(null);
 
   const fetchExp = async () => {
-    const res = await axios.get("/api/experience");
-    setExperiences(res.data);
+    try {
+      const res = await axios.get("/api/experience");
+      setExperiences(res.data);
+    } catch (error) {
+      console.log("Fetching experiences failed");
+    }
   };
 
   const handleDelete = async (id: string) => {
@@ -45,7 +49,7 @@ export default function ExperiencePage() {
             setEditingExp(null);
             setIsModalOpen(true);
           }}
-          className="bg-(--primary-color) hover:bg-(--primary-color)/90 duration-300 text-(--accent) flex items-center gap-2 p-2 rounded-md font-bold  cursor-pointer outline-none"
+          className="bg-(--primary-color) hover:bg-(--primary-color)/90 duration-300 text-(--accent) flex items-center gap-2 px-4 py-2 rounded-md font-bold  cursor-pointer outline-none"
         >
           <MdAdd size={20} /> Add Experience
         </button>

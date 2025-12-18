@@ -38,7 +38,7 @@ export default function LoginForm() {
     <>
       <form
         onSubmit={handleSubmit}
-        className="p-6 bg-white/50 flex flex-col gap-4"
+        className="w-110 p-6 bg-white/50 flex flex-col gap-4 rounded-md shadow-md"
       >
         <h2 className={`${bric.className} font-bold text-2xl`}>Login</h2>
         <Input

@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { MdClose, MdCloudUpload } from "react-icons/md";
 import axios from "axios";
-import { uploadToCloudinary } from "@/lib/upoad";
+import { uploadToCloudinary } from "@/lib/upload";
 import Input from "@/components/ui/Input";
 import { bric } from "@/lib/font";
 
