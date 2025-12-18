@@ -3,21 +3,32 @@
 import { bric } from "@/lib/font";
 import { FormEvent, useState } from "react";
 import Input from "../ui/Input";
+import axios from "axios";
+import { useRouter } from "next/navigation";
 
 export default function LoginForm() {
+  const router = useRouter();
+
   const [email, setEmail] = useState<string>("");
   const [password, setPassoword] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
 
-  function handleSubmit(event: FormEvent) {
+  async function handleSubmit(event: FormEvent) {
     event.preventDefault();
+
+    if (loading) return;
     setLoading(true);
 
     try {
+      await axios.post("/api/auth/login", { email, password });
       console.log(email, password);
 
       setEmail("");
       setPassoword("");
+
+      router.push("/");
+    } catch (error) {
+      console.log(error);
     } finally {
       setLoading(false);
     }
