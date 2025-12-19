@@ -40,8 +40,18 @@ const UserSchema = new Schema(
   { timestamps: true }
 );
 
+const MessageSchema = new Schema(
+  {
+    name: { type: String, required: true },
+    email: { type: String, required: true, lowercase: true },
+    message: { type: String, required: true },
+  },
+  { timestamps: true }
+);
+
 export const Project = models.Project || model("Project", ProjectSchema);
 export const Experience =
   models.Experience || model("Experience", ExperienceSchema);
 export const Skill = models.Skill || model("Skill", SkillSchema);
 export const User = models.User || model("User", UserSchema);
+export const Message = models.Message || model("Message", MessageSchema);

@@ -10,6 +10,7 @@ const links = [
   { href: "/projects", label: "Projects" },
   { href: "/experience", label: "Experience" },
   { href: "/skills", label: "Skills" },
+  { href: "/messages", label: "Messages" },
 ];
 
 export default function Sidebar() {
